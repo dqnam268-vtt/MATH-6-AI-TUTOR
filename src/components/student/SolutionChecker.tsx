@@ -157,6 +157,33 @@ export const SolutionChecker: React.FC = () => {
             placeholder="Ghi từng bước em đã làm để AI kiểm tra giúp em..."
             className="w-full p-3 text-sm rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none font-mono"
           />
+
+          {/* Quick Math Symbols for Solution */}
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tight flex-shrink-0">
+              Chèn nhanh:
+            </span>
+            {[
+              { label: '· (nhân)', sym: ' \\cdot ' },
+              { label: ': (chia)', sym: ' : ' },
+              { label: 'a/b', sym: ' \\frac{a}{b} ' },
+              { label: 'x²', sym: '^2' },
+              { label: '∈ ℤ', sym: ' \\in \\mathbb{Z}' },
+              { label: '≤', sym: ' \\le ' },
+              { label: '≥', sym: ' \\ge ' },
+              { label: 'ƯCLN', sym: ' \\text{ƯCLN}(a, b)' },
+              { label: 'BCNN', sym: ' \\text{BCNN}(a, b)' }
+            ].map((s, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setSolutionText((prev) => prev + s.sym)}
+                className="px-2 py-0.5 bg-slate-100 text-slate-700 hover:bg-blue-600 hover:text-white rounded text-[11px] font-mono font-semibold border border-slate-200 transition-colors flex-shrink-0 shadow-2xs"
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
